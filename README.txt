@@ -4,11 +4,11 @@ Jlibfprint
 Copyright (C) 2012 Fabio Scippacercola <nonplay.programmer@gmail.com>
 Copyright (C) 2012 Agostino Savignano <savag88@gmail.com>
 
-libfprint was developed as part of an our little project during 
-our study at the University of Naples (Università degli studi di 
-Napoli Federico II). It was not developed in the sight to provide
-a full support to the fingerprint sensors under Linux, but just
-as basic access to these peripherals under Java.
+Jlibfprint was developed as part of a small project during our studies
+at the University of Naples (Università degli studi di Napoli Federico II).
+It was not developed in the sight to provide a full support to 
+the fingerprint sensors under Linux, but just as basic access to these 
+peripherals under Java.
 
 We are sharing the code in the hope that it can be enough for your 
 purposes or at least can just be a good starting point to extend 
