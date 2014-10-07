@@ -25,8 +25,14 @@ package jlibfprint;
  */
 public class JlibFprint {
   
+    public static final String JNI_ENV = "JLIBFPRINT_JNI";
+
     static {
-        System.loadLibrary("JlibFprint_jni");
+        String jniEnv = System.getenv(JNI_ENV);
+        if (jniEnv == null) {
+            throw new RuntimeException("Environment variable \"" + JNI_ENV + "\" not set");
+        }
+        System.load(jniEnv);
     }    
     
     /** 
