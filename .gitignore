@@ -1,6 +1,8 @@
 /JlibFprint/target/
 /JlibFprint/nbproject/
-JlibFprint_jni/build
-JlibFprint_jni/dist
-JlibFprint_jni/nbproject/private
-
+/JlibFprint/nbactions.xml
+/JlibFprint_jni/build
+/JlibFprint_jni/dist
+/JlibFprint_jni/nbproject/private
+/JlibFprint_jni/nbproject/Makefile-Default.mk
+/JlibFprint_jni/nbproject/Package-Default.bash
