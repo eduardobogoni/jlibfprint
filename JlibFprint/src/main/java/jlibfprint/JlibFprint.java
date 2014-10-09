@@ -169,4 +169,6 @@ public class JlibFprint {
      * Typically only one fingerprint sensor is available on a computer.
      */
     private int deviceID = 0;
+
+    public static native Device[] discoverDevices();
 }

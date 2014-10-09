@@ -25,6 +25,14 @@ JNIEXPORT jobject JNICALL Java_jlibfprint_JlibFprint_enroll_1finger
 JNIEXPORT jint JNICALL Java_jlibfprint_JlibFprint_img_1compare_1print_1data
   (JNIEnv *, jclass, jobject, jobject);
 
+/*
+ * Class:     jlibfprint_JlibFprint
+ * Method:    discoverDevices
+ * Signature: 
+ */
+JNIEXPORT jobject JNICALL Java_jlibfprint_JlibFprint_discoverDevices
+  (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif

@@ -130,6 +130,13 @@ bool get_device_id(JNIEnv* env, jobject obj, fp_dev** device)
     return found;
 }
 
+void throw_core_exception(JNIEnv* env, const char* message) {
+    const jclass clazz = env->FindClass("jlibfprint/CoreException");
+    const jmethodID constructor = env->GetMethodID(clazz, "<init>", "(Ljava/lang/String;)V");
+    jobject exception = env->NewObject(clazz, constructor, message);
+    env->Throw((jthrowable) exception);
+}
+
 void throw_enroll_exception(JNIEnv* env, int errorCode) 
 {
     const jclass eeClass = env->FindClass("jlibfprint/JlibFprint$EnrollException");
@@ -214,4 +221,31 @@ JNIEXPORT jint JNICALL Java_jlibfprint_JlibFprint_img_1compare_1print_1data(JNIE
     memset(&fpd2, 0, sizeof(fp_print_data));
     
     return retVal;
+}
+
+JNIEXPORT jobject JNICALL Java_jlibfprint_JlibFprint_discoverDevices(JNIEnv *env, jclass cls) {
+    if (fp_init()) {
+        throw_core_exception(env, "Could not load libfprint");
+        return NULL;
+    }
+    fp_dscv_dev **discoveredDevices = fp_discover_devs();
+    if (!discoveredDevices) {
+        throw_core_exception(env, "Could not discover devices");
+        return NULL;
+    }
+    int count = 0;
+    for (int i = 0; discoveredDevices[i] != NULL; ++i) {
+        count++;
+    }
+
+    const jclass deviceClass = env->FindClass("jlibfprint/Device");
+    jobjectArray devices = env->NewObjectArray(count, deviceClass, 0);
+    for (int i = 0; i < count; ++i) {
+        jobject device = env->AllocObject(deviceClass);
+        jfieldID ptrFieldId = env->GetFieldID(deviceClass, "devicePointer", "J");
+        env->SetLongField(device, ptrFieldId, (long) discoveredDevices[i]);
+    }
+    fp_dscv_devs_free(discoveredDevices);
+    return devices;
+
 }
