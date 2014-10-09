@@ -130,6 +130,15 @@ bool get_device_id(JNIEnv* env, jobject obj, fp_dev** device)
     return found;
 }
 
+void throw_enroll_exception(JNIEnv* env, int errorCode) 
+{
+    const jclass eeClass = env->FindClass("jlibfprint/JlibFprint$EnrollException");
+    jobject enrollException = env->AllocObject(eeClass);
+    jfieldID eeExcp_id = env->GetFieldID(eeClass, "enroll_exception", "I");
+    env->SetIntField(enrollException, eeExcp_id, errorCode);
+    env->Throw((jthrowable)enrollException);
+}
+
 /**
  * Enrolls a finger and returns the associated fp-data.
  * 
@@ -141,15 +150,11 @@ bool get_device_id(JNIEnv* env, jobject obj, fp_dev** device)
 JNIEXPORT jobject JNICALL Java_jlibfprint_JlibFprint_enroll_1finger(JNIEnv* env, jobject ref)
 {
     const jclass fpClass = env->FindClass("jlibfprint/JlibFprint$fp_print_data");
-    const jclass eeClass = env->FindClass("jlibfprint/JlibFprint$EnrollException");
     
     /* Starts the library */
     if (fp_init())  // Se differente da 0 => Exception
     {
-        jobject enrollException = env->AllocObject(eeClass);
-        jfieldID eeExcp_id = env->GetFieldID(eeClass, "enroll_exception", "I");
-        env->SetIntField(enrollException, eeExcp_id, UNABLE_TO_LOAD_LIBFPRINT);
-        env->Throw((jthrowable)enrollException);
+        throw_enroll_exception(env, UNABLE_TO_LOAD_LIBFPRINT);
         return NULL;
     }
     fp_dev *device;
@@ -158,10 +163,7 @@ JNIEXPORT jobject JNICALL Java_jlibfprint_JlibFprint_enroll_1finger(JNIEnv* env,
     /* Gets the pointer to the device */
     if (!get_device_id(env, ref, &device))
     {
-        jobject enrollException = env->AllocObject(eeClass);
-        jfieldID eeExcp_id = env->GetFieldID(eeClass, "enroll_exception", "I");
-        env->SetIntField(enrollException, eeExcp_id, DEVICE_NOT_FOUND);
-        env->Throw((jthrowable)enrollException);
+        throw_enroll_exception(env, DEVICE_NOT_FOUND);
         return NULL;
     }    
     
@@ -173,10 +175,7 @@ JNIEXPORT jobject JNICALL Java_jlibfprint_JlibFprint_enroll_1finger(JNIEnv* env,
     /* Raises an exception if the enrollment was not completed */
     if (ef != FP_ENROLL_COMPLETE)
     {
-        jobject enrollException = env->AllocObject(eeClass);
-        jfieldID eeExcp_id = env->GetFieldID(eeClass, "enroll_exception", "I");
-        env->SetIntField(enrollException, eeExcp_id, ef);
-        env->Throw((jthrowable)enrollException);
+        throw_enroll_exception(env, ef);
     }
     else
     {
