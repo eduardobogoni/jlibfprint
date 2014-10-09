@@ -238,12 +238,13 @@ JNIEXPORT jobject JNICALL Java_jlibfprint_JlibFprint_discoverDevices(JNIEnv *env
         count++;
     }
 
-    const jclass deviceClass = env->FindClass("jlibfprint/Device");
+    const jclass deviceClass = env->FindClass("jlibfprint/DiscoveredDevice");
     jobjectArray devices = env->NewObjectArray(count, deviceClass, 0);
     for (int i = 0; i < count; ++i) {
         jobject device = env->AllocObject(deviceClass);
-        jfieldID ptrFieldId = env->GetFieldID(deviceClass, "devicePointer", "J");
+        jfieldID ptrFieldId = env->GetFieldID(deviceClass, "pointer", "J");
         env->SetLongField(device, ptrFieldId, (long) discoveredDevices[i]);
+        env->SetObjectArrayElement(devices, i, device);
     }
     fp_dscv_devs_free(discoveredDevices);
     return devices;
