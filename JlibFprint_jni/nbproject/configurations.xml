@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="80">
+<configurationDescriptor version="95">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>JniUtils.h</itemPath>
       <itemPath>jlibfprint_DiscoveredDevice.h</itemPath>
+      <itemPath>jlibfprint_DiscoveredDeviceList.h</itemPath>
       <itemPath>jlibfprint_JlibFprint.h</itemPath>
       <itemPath>jlibfprint_JlibFprint_fp_enroll_result.h</itemPath>
       <itemPath>jlibfprint_JlibFprint_fp_enroll_results.h</itemPath>
@@ -19,7 +21,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>JniUtils.cpp</itemPath>
       <itemPath>jlibfprint_DiscoveredDevice.cpp</itemPath>
+      <itemPath>jlibfprint_DiscoveredDeviceList.cpp</itemPath>
       <itemPath>jlibfprint_JlibFprint.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -38,8 +42,9 @@
   <confs>
     <conf name="Default" type="2">
       <toolsSet>
-        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
@@ -47,6 +52,10 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>/usr/lib/jvm/java-7-oracle/include</pElem>
+            <pElem>/usr/lib/jvm/java-7-oracle/include/linux</pElem>
+          </incDir>
           <commandLine>$(ADD_INCLUDES)</commandLine>
         </ccTool>
         <fortranCompilerTool>
@@ -61,9 +70,26 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="JniUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="JniUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="jlibfprint_DiscoveredDevice.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="jlibfprint_DiscoveredDevice.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jlibfprint_DiscoveredDeviceList.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jlibfprint_DiscoveredDeviceList.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="jlibfprint_JlibFprint.cpp" ex="false" tool="1" flavor2="0">
       </item>

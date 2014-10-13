@@ -6,7 +6,8 @@ package jlibfprint;
  */
 public class DiscoveredDevice {
 
-    private long pointer;
+    private long internalPointer;
+    private DiscoveredDeviceList sourceList;
     
     public native int getType();
 

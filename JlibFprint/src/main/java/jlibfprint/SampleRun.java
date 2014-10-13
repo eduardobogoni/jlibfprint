@@ -28,31 +28,10 @@ public class SampleRun {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        JlibFprint jlibfprint = new JlibFprint();
-        JlibFprint.fp_print_data pd1, pd2;
-        int matchValue;
-        try
-        {
-            System.out.println("Enroll the first finger...");
-            pd1 = jlibfprint.enroll_finger();
-            System.out.println("Compare the previous acquisition with the next one...");
-            pd2 = jlibfprint.enroll_finger();
-            matchValue = JlibFprint.img_compare_print_data(pd1, pd2);
-            
-            System.out.println(matchValue);
-            if (matchValue > JlibFprint.BOZORTH_THRESHOLD)
-            {
-                System.out.println("[OK] The two fingerprints are compatible!");
-            }
-            else
-            {
-                System.out.println("[FAIL] The two fingerprints are not compatible!");
-            }
-        }
-        catch (JlibFprint.EnrollException e)
-        {
-            System.err.format("Enroll Exception [%d]\n", e.enroll_exception);
-            e.printStackTrace();
+        DiscoveredDeviceList discoveredDeviceList = JlibFprint.discoverDevices();
+        System.out.println("Devices discovered: " + discoveredDeviceList.getDiscoveredDevices().length);
+        for(DiscoveredDevice discoveredDevice: discoveredDeviceList.getDiscoveredDevices()) {
+            System.out.println(discoveredDevice + " / Type: " + discoveredDevice.getType());
         }
     }
 }

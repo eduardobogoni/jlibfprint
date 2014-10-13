@@ -23,6 +23,8 @@
 
 #include <cstddef>
 
+#define MAX_BOZORTH_MINUTIAE            200
+
 /**
  * The following code in this header file was adapted by libfprint project.
  * See the README for information about the license and the authors.
@@ -31,7 +33,12 @@
 extern "C"
 {
     #include <libfprint/fprint.h>
-    #include <bozorth.h>
+    struct xyt_struct {
+        int nrows;
+        int xcol[     MAX_BOZORTH_MINUTIAE ];
+        int ycol[     MAX_BOZORTH_MINUTIAE ];
+        int thetacol[ MAX_BOZORTH_MINUTIAE ];
+    };
     
     struct fp_minutiae {
             int alloc;

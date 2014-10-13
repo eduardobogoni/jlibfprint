@@ -170,5 +170,5 @@ public class JlibFprint {
      */
     private int deviceID = 0;
 
-    public static native DiscoveredDevice[] discoverDevices();
+    public static native DiscoveredDeviceList discoverDevices();
 }

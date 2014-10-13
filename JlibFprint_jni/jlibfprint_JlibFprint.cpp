@@ -22,6 +22,7 @@
 #include "jlibfprint_JlibFprint.h"
 #include "libfprintWrapper.h"
 #include <cstring>
+#include "jlibfprint_DiscoveredDeviceList.h"
 
 /**
  * Populate a jlibfprint/JlibFprint$fp_print_data object with the data
@@ -233,20 +234,5 @@ JNIEXPORT jobject JNICALL Java_jlibfprint_JlibFprint_discoverDevices(JNIEnv *env
         throw_core_exception(env, "Could not discover devices");
         return NULL;
     }
-    int count = 0;
-    for (int i = 0; discoveredDevices[i] != NULL; ++i) {
-        count++;
-    }
-
-    const jclass deviceClass = env->FindClass("jlibfprint/DiscoveredDevice");
-    jobjectArray devices = env->NewObjectArray(count, deviceClass, 0);
-    for (int i = 0; i < count; ++i) {
-        jobject device = env->AllocObject(deviceClass);
-        jfieldID ptrFieldId = env->GetFieldID(deviceClass, "pointer", "J");
-        env->SetLongField(device, ptrFieldId, (long) discoveredDevices[i]);
-        env->SetObjectArrayElement(devices, i, device);
-    }
-    fp_dscv_devs_free(discoveredDevices);
-    return devices;
-
+    return createDiscoveredDeviceList(env, discoveredDevices);
 }
