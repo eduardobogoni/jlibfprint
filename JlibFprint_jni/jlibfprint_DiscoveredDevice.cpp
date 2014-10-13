@@ -2,6 +2,7 @@
 #include "libfprintWrapper.h"
 #include "JniUtils.h"
 #include "jlibfprint_Driver.h"
+#include "jlibfprint_Device.h"
 
 jobject createDiscoveredDevice(JNIEnv *env, fp_dscv_dev* fpDiscoveredDevice) {
     const jclass discoveredDeviceClass = env->FindClass(DISCOVERED_DEVICE_CLASS);
@@ -24,4 +25,11 @@ JNIEXPORT jobject JNICALL Java_jlibfprint_DiscoveredDevice_nativeGetDriver(JNIEn
     fp_dscv_dev* fpDiscoveredDevice = (fp_dscv_dev*) JniUtils::getInternalPointer(env, object);
     fp_driver* fpDriver = fp_dscv_dev_get_driver(fpDiscoveredDevice);
     return createDriver(env, fpDriver);
+}
+
+JNIEXPORT jobject JNICALL Java_jlibfprint_DiscoveredDevice_open(JNIEnv* env, jobject object) {
+    fp_dscv_dev* fpDiscoveredDevice = (fp_dscv_dev*) JniUtils::getInternalPointer(env, object);
+    fp_dev* fpDevice = fp_dev_open(fpDiscoveredDevice);
+    printf("Device: %p\n", fpDevice);
+    return createDevice(env, fpDevice);
 }

@@ -39,5 +39,15 @@ public class SampleRun {
             System.out.println("\tDriver.full_name: " + discoveredDevice.getDriver().getFullName());
             System.out.println("\tDriver.id: " + discoveredDevice.getDriver().getId());
         }
+        if (discoveredDeviceList.getDiscoveredDevices().length > 0) {
+            DiscoveredDevice firstDiscoveredDevice = discoveredDeviceList.getDiscoveredDevices()[0];
+            Device device = firstDiscoveredDevice.open();
+            System.out.println("=====================================");
+            System.out.println("Device: " + device);
+            System.out.println("\tNumber of enroll stages: " + device.getNumberEnrollStages());
+            System.out.println("\tImage width: " + device.getImageWidth());
+            System.out.println("\tImage height: " + device.getImageHeight());
+            device.close();
+        }
     }
 }

@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>JniUtils.h</itemPath>
+      <itemPath>jlibfprint_Device.h</itemPath>
       <itemPath>jlibfprint_DiscoveredDevice.h</itemPath>
       <itemPath>jlibfprint_DiscoveredDeviceList.h</itemPath>
       <itemPath>jlibfprint_Driver.h</itemPath>
@@ -23,6 +24,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>JniUtils.cpp</itemPath>
+      <itemPath>jlibfprint_Device.cpp</itemPath>
       <itemPath>jlibfprint_DiscoveredDevice.cpp</itemPath>
       <itemPath>jlibfprint_DiscoveredDeviceList.cpp</itemPath>
       <itemPath>jlibfprint_Driver.cpp</itemPath>
@@ -81,6 +83,10 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="jlibfprint_Device.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="jlibfprint_Device.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="jlibfprint_DiscoveredDevice.cpp" ex="false" tool="1" flavor2="0">
       </item>

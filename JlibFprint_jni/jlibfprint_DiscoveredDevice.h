@@ -25,6 +25,9 @@ JNIEXPORT jint JNICALL Java_jlibfprint_DiscoveredDevice_getType
     JNIEXPORT jobject JNICALL Java_jlibfprint_DiscoveredDevice_nativeGetDriver
     (JNIEnv *, jobject);
 
+    JNIEXPORT jobject JNICALL Java_jlibfprint_DiscoveredDevice_open
+    (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif

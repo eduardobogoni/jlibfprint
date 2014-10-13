@@ -9,7 +9,10 @@ public class DiscoveredDevice {
     private long internalPointer;
     private DiscoveredDeviceList sourceList;
     private Driver driver;
-    
+
+    private DiscoveredDevice() {
+    }
+
     public native int getType();
     
     public native int getDriverId();
@@ -22,5 +25,7 @@ public class DiscoveredDevice {
     }
 
     private native Driver nativeGetDriver();
+
+    public native Device open();
 
 }
