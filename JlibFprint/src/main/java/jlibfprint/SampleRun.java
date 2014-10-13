@@ -31,7 +31,13 @@ public class SampleRun {
         DiscoveredDeviceList discoveredDeviceList = JlibFprint.discoverDevices();
         System.out.println("Devices discovered: " + discoveredDeviceList.getDiscoveredDevices().length);
         for(DiscoveredDevice discoveredDevice: discoveredDeviceList.getDiscoveredDevices()) {
-            System.out.println(discoveredDevice + " / Type: " + discoveredDevice.getType());
+            System.out.println("=====================================");
+            System.out.println(discoveredDevice);
+            System.out.println("\ttype_id: " + discoveredDevice.getType());
+            System.out.println("\tdriver_id: " + discoveredDevice.getDriverId());
+            System.out.println("\tDriver.name: " + discoveredDevice.getDriver().getName());
+            System.out.println("\tDriver.full_name: " + discoveredDevice.getDriver().getFullName());
+            System.out.println("\tDriver.id: " + discoveredDevice.getDriver().getId());
         }
     }
 }

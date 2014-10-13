@@ -19,6 +19,12 @@ jobject createDiscoveredDevice(JNIEnv *env, fp_dscv_dev* fpDiscoveredDevice);
 JNIEXPORT jint JNICALL Java_jlibfprint_DiscoveredDevice_getType
   (JNIEnv *, jobject);
 
+    JNIEXPORT jint JNICALL Java_jlibfprint_DiscoveredDevice_getDriverId
+    (JNIEnv*, jobject);
+
+    JNIEXPORT jobject JNICALL Java_jlibfprint_DiscoveredDevice_nativeGetDriver
+    (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif

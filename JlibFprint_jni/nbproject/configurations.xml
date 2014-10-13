@@ -7,6 +7,7 @@
       <itemPath>JniUtils.h</itemPath>
       <itemPath>jlibfprint_DiscoveredDevice.h</itemPath>
       <itemPath>jlibfprint_DiscoveredDeviceList.h</itemPath>
+      <itemPath>jlibfprint_Driver.h</itemPath>
       <itemPath>jlibfprint_JlibFprint.h</itemPath>
       <itemPath>jlibfprint_JlibFprint_fp_enroll_result.h</itemPath>
       <itemPath>jlibfprint_JlibFprint_fp_enroll_results.h</itemPath>
@@ -24,6 +25,7 @@
       <itemPath>JniUtils.cpp</itemPath>
       <itemPath>jlibfprint_DiscoveredDevice.cpp</itemPath>
       <itemPath>jlibfprint_DiscoveredDeviceList.cpp</itemPath>
+      <itemPath>jlibfprint_Driver.cpp</itemPath>
       <itemPath>jlibfprint_JlibFprint.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -90,6 +92,10 @@
             flavor2="0">
       </item>
       <item path="jlibfprint_DiscoveredDeviceList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jlibfprint_Driver.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="jlibfprint_Driver.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="jlibfprint_JlibFprint.cpp" ex="false" tool="1" flavor2="0">
       </item>
