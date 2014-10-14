@@ -7,6 +7,13 @@ void JniUtils::setObjectAttribute(JNIEnv* env, jobject object,
     env->SetObjectField(object, fieldId, value);
 }
 
+void JniUtils::setIntegerAttribute(JNIEnv* env, jobject object, 
+        const char* attributeName, int value) {
+    const jclass clazz = env->GetObjectClass(object);
+    jfieldID fieldId = env->GetFieldID(clazz, attributeName, "I");
+    env->SetIntField(object, fieldId, value);
+}
+
 void* JniUtils::getInternalPointer(JNIEnv* env, jobject object) {
     const jclass clazz = env->GetObjectClass(object);
     jfieldID internalPointerFieldId = env->GetFieldID(clazz, "internalPointer", "J");

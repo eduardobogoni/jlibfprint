@@ -23,6 +23,9 @@ extern "C" {
     
     JNIEXPORT void JNICALL Java_jlibfprint_Device_nativeClose
     (JNIEnv *, jobject);
+
+    JNIEXPORT jobject JNICALL Java_jlibfprint_Device_enroll
+    (JNIEnv *, jobject);
    
     
 #ifdef __cplusplus

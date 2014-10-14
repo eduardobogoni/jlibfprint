@@ -22,4 +22,12 @@ public class Device {
 
     private native void nativeClose();
 
+    public native EnrollResult enroll();
+
+    @Override
+    protected void finalize() throws Throwable {
+        close();
+        super.finalize();
+    }
+
 }

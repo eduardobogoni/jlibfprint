@@ -29,6 +29,29 @@ public class SampleRun {
      */
     public static void main(String[] args) {
         DiscoveredDeviceList discoveredDeviceList = JlibFprint.discoverDevices();
+        listDiscoveredDevices(discoveredDeviceList);
+        DiscoveredDevice firstDiscoveredDevice = getFirstDiscoveredDevice(discoveredDeviceList);
+
+        if (firstDiscoveredDevice == null) {
+            System.out.println("No device found to enroll fingers");
+        } else {
+            Device device = firstDiscoveredDevice.open();
+            showDeviceInfo(device);
+            enroll(device);
+            device.close();
+        }
+
+    }
+
+    private static void showDeviceInfo(Device device) {
+        System.out.println("=====================================");
+        System.out.println("Device: " + device);
+        System.out.println("\tNumber of enroll stages: " + device.getNumberEnrollStages());
+        System.out.println("\tImage width: " + device.getImageWidth());
+        System.out.println("\tImage height: " + device.getImageHeight());
+    }
+
+    private static void listDiscoveredDevices(DiscoveredDeviceList discoveredDeviceList) {
         System.out.println("Devices discovered: " + discoveredDeviceList.getDiscoveredDevices().length);
         for(DiscoveredDevice discoveredDevice: discoveredDeviceList.getDiscoveredDevices()) {
             System.out.println("=====================================");
@@ -39,15 +62,18 @@ public class SampleRun {
             System.out.println("\tDriver.full_name: " + discoveredDevice.getDriver().getFullName());
             System.out.println("\tDriver.id: " + discoveredDevice.getDriver().getId());
         }
-        if (discoveredDeviceList.getDiscoveredDevices().length > 0) {
-            DiscoveredDevice firstDiscoveredDevice = discoveredDeviceList.getDiscoveredDevices()[0];
-            Device device = firstDiscoveredDevice.open();
-            System.out.println("=====================================");
-            System.out.println("Device: " + device);
-            System.out.println("\tNumber of enroll stages: " + device.getNumberEnrollStages());
-            System.out.println("\tImage width: " + device.getImageWidth());
-            System.out.println("\tImage height: " + device.getImageHeight());
-            device.close();
-        }
     }
+
+    private static DiscoveredDevice getFirstDiscoveredDevice(DiscoveredDeviceList discoveredDeviceList) {
+        return discoveredDeviceList.getDiscoveredDevices().length > 0
+                ? discoveredDeviceList.getDiscoveredDevices()[0]
+                : null;
+    }
+
+    private static void enroll(Device device) {
+        EnrollResult enrollResult = device.enroll();
+        System.out.println("Enroll result code: " + enrollResult.getCode());
+        System.out.println("Print data: " + enrollResult.getPrintData());
+    }
+
 }

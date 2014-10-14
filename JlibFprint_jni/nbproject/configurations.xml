@@ -9,11 +9,13 @@
       <itemPath>jlibfprint_DiscoveredDevice.h</itemPath>
       <itemPath>jlibfprint_DiscoveredDeviceList.h</itemPath>
       <itemPath>jlibfprint_Driver.h</itemPath>
+      <itemPath>jlibfprint_EnrollResult.h</itemPath>
       <itemPath>jlibfprint_JlibFprint.h</itemPath>
       <itemPath>jlibfprint_JlibFprint_fp_enroll_result.h</itemPath>
       <itemPath>jlibfprint_JlibFprint_fp_enroll_results.h</itemPath>
       <itemPath>jlibfprint_JlibFprint_fp_print_data.h</itemPath>
       <itemPath>jlibfprint_JlibFprint_fp_print_data_type.h</itemPath>
+      <itemPath>jlibfprint_PrintData.h</itemPath>
       <itemPath>libfprintWrapper.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -28,7 +30,9 @@
       <itemPath>jlibfprint_DiscoveredDevice.cpp</itemPath>
       <itemPath>jlibfprint_DiscoveredDeviceList.cpp</itemPath>
       <itemPath>jlibfprint_Driver.cpp</itemPath>
+      <itemPath>jlibfprint_EnrollResult.cpp</itemPath>
       <itemPath>jlibfprint_JlibFprint.cpp</itemPath>
+      <itemPath>jlibfprint_PrintData.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -103,6 +107,10 @@
       </item>
       <item path="jlibfprint_Driver.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="jlibfprint_EnrollResult.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="jlibfprint_EnrollResult.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="jlibfprint_JlibFprint.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="jlibfprint_JlibFprint.h" ex="false" tool="3" flavor2="0">
@@ -126,6 +134,10 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="jlibfprint_PrintData.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="jlibfprint_PrintData.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="libfprintWrapper.h" ex="false" tool="3" flavor2="0">
       </item>
