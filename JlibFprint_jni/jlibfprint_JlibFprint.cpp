@@ -23,6 +23,7 @@
 #include "libfprintWrapper.h"
 #include <cstring>
 #include "jlibfprint_DiscoveredDeviceList.h"
+#include "jlibfprint_Exceptions.h"
 
 /**
  * Populate a jlibfprint/JlibFprint$fp_print_data object with the data
@@ -129,22 +130,6 @@ bool get_device_id(JNIEnv* env, jobject obj, fp_dev** device)
     }
     fp_dscv_devs_free(fpList);
     return found;
-}
-
-void throw_core_exception(JNIEnv* env, const char* message) {
-    const jclass clazz = env->FindClass("jlibfprint/CoreException");
-    const jmethodID constructor = env->GetMethodID(clazz, "<init>", "(Ljava/lang/String;)V");
-    jobject exception = env->NewObject(clazz, constructor, message);
-    env->Throw((jthrowable) exception);
-}
-
-void throw_enroll_exception(JNIEnv* env, int errorCode) 
-{
-    const jclass eeClass = env->FindClass("jlibfprint/JlibFprint$EnrollException");
-    jobject enrollException = env->AllocObject(eeClass);
-    jfieldID eeExcp_id = env->GetFieldID(eeClass, "enroll_exception", "I");
-    env->SetIntField(enrollException, eeExcp_id, errorCode);
-    env->Throw((jthrowable)enrollException);
 }
 
 /**

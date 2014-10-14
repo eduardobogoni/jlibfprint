@@ -12,6 +12,9 @@ extern "C" {
 
     jobject createPrintData(JNIEnv *env, fp_print_data* printData);
     
+    JNIEXPORT jbyteArray JNICALL Java_jlibfprint_PrintData_getData
+    (JNIEnv *, jobject);
+    
     JNIEXPORT void JNICALL Java_jlibfprint_PrintData_free
     (JNIEnv *, jobject);
 

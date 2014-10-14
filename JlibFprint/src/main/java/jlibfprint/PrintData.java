@@ -9,7 +9,8 @@ public class PrintData {
     @Override
     protected void finalize() throws Throwable {
         free();
-        super.finalize(); //To change body of generated methods, choose Tools | Templates.
+        super.finalize();
     }
 
+    public native byte[] getData();
 }

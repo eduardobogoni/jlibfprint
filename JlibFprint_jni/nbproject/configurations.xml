@@ -111,6 +111,10 @@
       </item>
       <item path="jlibfprint_EnrollResult.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="jlibfprint_Exceptions.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="jlibfprint_Exceptions.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="jlibfprint_JlibFprint.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="jlibfprint_JlibFprint.h" ex="false" tool="3" flavor2="0">
