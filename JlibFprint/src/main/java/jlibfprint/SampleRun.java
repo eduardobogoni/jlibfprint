@@ -38,7 +38,7 @@ public class SampleRun {
             Device device = firstDiscoveredDevice.open();
             showDeviceInfo(device);
             EnrollResult enrollResult = enroll(device);
-            if (enrollResult.getCode() == 1) {
+            if (EnrollResultCode.COMPLETE.equals(enrollResult.getCode())) {
                 identify(device, enrollResult.getPrintData());
             }
             device.close();

@@ -3,17 +3,18 @@ package jlibfprint;
 public class EnrollResult {
 
     private PrintData printData;
-    private int code;
+    private EnrollResultCode code;
 
-    public boolean isCodeError() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private EnrollResult(int code, PrintData printData) {
+        this.code = EnrollResultCode.getValueByCode(code);
+        this.printData = printData;
     }
 
     public PrintData getPrintData() {
         return printData;
     }
 
-    public int getCode() {
+    public EnrollResultCode getCode() {
         return code;
     }
 
