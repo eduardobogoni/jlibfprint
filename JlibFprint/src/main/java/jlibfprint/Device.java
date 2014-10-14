@@ -23,6 +23,12 @@ public class Device {
     private native void nativeClose();
 
     public native EnrollResult enroll();
+    
+    public VerifyResultCode verify(PrintData printData) {
+        return VerifyResultCode.getValueByCode(nativeVerify(printData));
+    }
+
+    private native int nativeVerify(PrintData printData);
 
     @Override
     protected void finalize() throws Throwable {

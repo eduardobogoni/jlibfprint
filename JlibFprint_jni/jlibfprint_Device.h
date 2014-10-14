@@ -26,7 +26,9 @@ extern "C" {
 
     JNIEXPORT jobject JNICALL Java_jlibfprint_Device_enroll
     (JNIEnv *, jobject);
-   
+
+    JNIEXPORT jint JNICALL Java_jlibfprint_Device_nativeVerify
+    (JNIEnv *, jobject, jobject);
     
 #ifdef __cplusplus
 }

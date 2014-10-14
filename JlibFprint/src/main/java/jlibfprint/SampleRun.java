@@ -37,7 +37,10 @@ public class SampleRun {
         } else {
             Device device = firstDiscoveredDevice.open();
             showDeviceInfo(device);
-            enroll(device);
+            EnrollResult enrollResult = enroll(device);
+            if (enrollResult.getCode() == 1) {
+                identify(device, enrollResult.getPrintData());
+            }
             device.close();
         }
 
@@ -70,10 +73,18 @@ public class SampleRun {
                 : null;
     }
 
-    private static void enroll(Device device) {
+    private static EnrollResult enroll(Device device) {
+        System.out.println("Please, enroll the finger");
         EnrollResult enrollResult = device.enroll();
         System.out.println("Enroll result code: " + enrollResult.getCode());
         System.out.println("Print data: " + enrollResult.getPrintData());
+        return enrollResult;
+    }
+
+    private static void identify(Device device, PrintData printData) {
+        System.out.println("Please, enroll the finger again to verifiy");
+        VerifyResultCode result = device.verify(printData);
+        System.out.println("Verify result code: " + result);        
     }
 
 }

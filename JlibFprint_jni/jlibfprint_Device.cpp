@@ -32,3 +32,9 @@ JNIEXPORT jobject JNICALL Java_jlibfprint_Device_enroll(JNIEnv * env, jobject ob
     int code = fp_enroll_finger(fpDevice, &fpPrintData);
     return createEnrollResult(env, fpPrintData, code);
 }
+
+JNIEXPORT jint JNICALL Java_jlibfprint_Device_nativeVerify(JNIEnv *env, jobject object, jobject printData) {
+    fp_dev* fpDevice = (fp_dev*) JniUtils::getInternalPointer(env, object);
+    fp_print_data* fpPrintData = (fp_print_data*) JniUtils::getInternalPointer(env, printData);    
+    return fp_verify_finger(fpDevice, fpPrintData);
+}
