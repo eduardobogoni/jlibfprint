@@ -11,6 +11,9 @@ extern "C" {
 #endif
 
     jobject createDiscoveredDeviceList(JNIEnv *env, fp_dscv_dev** fpDiscoveredDevices);
+    
+    JNIEXPORT jint JNICALL Java_jlibfprint_DiscoveredDeviceList_free
+    (JNIEnv *, jobject, jobject);
 
 #ifdef __cplusplus
 }

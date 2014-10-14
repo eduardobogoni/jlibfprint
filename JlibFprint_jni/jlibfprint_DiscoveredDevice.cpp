@@ -3,11 +3,13 @@
 #include "JniUtils.h"
 #include "jlibfprint_Driver.h"
 #include "jlibfprint_Device.h"
+#include "jlibfprint_DiscoveredDeviceList.h"
 
-jobject createDiscoveredDevice(JNIEnv *env, fp_dscv_dev* fpDiscoveredDevice) {
+jobject createDiscoveredDevice(JNIEnv *env, fp_dscv_dev* fpDiscoveredDevice, jobject discoveredDeviceList) {
     const jclass discoveredDeviceClass = env->FindClass(DISCOVERED_DEVICE_CLASS);
     jobject device = env->AllocObject(discoveredDeviceClass);
     JniUtils::setInternalPointer(env, device, fpDiscoveredDevice);
+    JniUtils::setObjectAttribute(env, device, "sourceList", "L"DISCOVERED_DEVICE_LIST_CLASS";", discoveredDeviceList);
     return device;
 }
 

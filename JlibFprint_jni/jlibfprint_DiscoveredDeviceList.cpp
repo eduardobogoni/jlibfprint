@@ -15,7 +15,7 @@ jobject createDiscoveredDeviceList(JNIEnv *env, fp_dscv_dev** fpDiscoveredDevice
     jobjectArray discoveredDeviceArray = env->NewObjectArray(count, discoveredDeviceClass, 0);
 
     for (int i = 0; i < count; ++i) {
-        jobject discoveredDevice = createDiscoveredDevice(env, fpDiscoveredDevices[i]);
+        jobject discoveredDevice = createDiscoveredDevice(env, fpDiscoveredDevices[i], list);
         env->SetObjectArrayElement(discoveredDeviceArray, i, discoveredDevice);
     }
     JniUtils::setObjectAttribute(env, list, "discoveredDevices", "[L" DISCOVERED_DEVICE_CLASS ";",
@@ -23,3 +23,6 @@ jobject createDiscoveredDeviceList(JNIEnv *env, fp_dscv_dev** fpDiscoveredDevice
     return list;
 }
 
+JNIEXPORT jint JNICALL Java_jlibfprint_DiscoveredDeviceList_free(JNIEnv * env, jobject object) {
+    fp_dscv_devs_free((fp_dscv_dev**) JniUtils::getInternalPointer(env, object));
+}

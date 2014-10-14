@@ -11,4 +11,13 @@ public class DiscoveredDeviceList {
     public DiscoveredDevice[] getDiscoveredDevices() {
         return discoveredDevices;
     }
+
+    @Override
+    protected void finalize() throws Throwable {
+        free();
+        super.finalize();
+    }
+
+    private native void free();
+
 }

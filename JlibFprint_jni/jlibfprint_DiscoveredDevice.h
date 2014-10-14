@@ -14,7 +14,7 @@ extern "C" {
 #endif
     
    
-jobject createDiscoveredDevice(JNIEnv *env, fp_dscv_dev* fpDiscoveredDevice);
+jobject createDiscoveredDevice(JNIEnv *env, fp_dscv_dev* fpDiscoveredDevice, jobject discoveredDeviceList);
 
 JNIEXPORT jint JNICALL Java_jlibfprint_DiscoveredDevice_getType
   (JNIEnv *, jobject);
