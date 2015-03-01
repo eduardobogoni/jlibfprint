@@ -19,6 +19,8 @@
  */
 package jlibfprint;
 
+import java.util.Arrays;
+
 /**
  *  A simple execution can be used to test the library.
  * @author agostino
@@ -79,7 +81,7 @@ public class SampleRun {
             System.out.println("Please, enroll the finger");
             enrollResult = device.enroll();
             System.out.println("Enroll result code: " + enrollResult.getCode());
-            System.out.println("Print data: " + enrollResult.getPrintData());
+            System.out.println("Print data: " + Arrays.toString(enrollResult.getPrintData().getData()));
         }
         return enrollResult;
     }
