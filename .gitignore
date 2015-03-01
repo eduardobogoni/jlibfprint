@@ -6,3 +6,8 @@
 /JlibFprint_jni/nbproject/private
 /JlibFprint_jni/nbproject/Makefile-Default.mk
 /JlibFprint_jni/nbproject/Package-Default.bash
+
+#idea-files
+.idea
+*.iml
+atlassian-ide-plugin.xml
