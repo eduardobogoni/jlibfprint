@@ -74,10 +74,13 @@ public class SampleRun {
     }
 
     private static EnrollResult enroll(Device device) {
-        System.out.println("Please, enroll the finger");
-        EnrollResult enrollResult = device.enroll();
-        System.out.println("Enroll result code: " + enrollResult.getCode());
-        System.out.println("Print data: " + enrollResult.getPrintData());
+        EnrollResult enrollResult = null;
+        for ( int i = 0 ; i < device.getNumberEnrollStages() ; i++ ) {
+            System.out.println("Please, enroll the finger");
+            enrollResult = device.enroll();
+            System.out.println("Enroll result code: " + enrollResult.getCode());
+            System.out.println("Print data: " + enrollResult.getPrintData());
+        }
         return enrollResult;
     }
 
