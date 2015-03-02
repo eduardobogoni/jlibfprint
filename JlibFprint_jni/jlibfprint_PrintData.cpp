@@ -7,7 +7,7 @@
 jobject createPrintData(JNIEnv *env, fp_print_data* printData) {
     const jclass driverClass = env->FindClass(PRINT_DATA_CLASS);
     jobject driver = env->AllocObject(driverClass);
-    JniUtils::setInternalPointer(env, driver, &printData);
+    JniUtils::setInternalPointer(env, driver, printData);
     return driver;
 }
 
