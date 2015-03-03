@@ -40,14 +40,34 @@ with the native library along with an example, the second one is the dynamic lib
    
 	- In libfprint find the file img.c and open it
 	- Find the function 
-		``` int fpi_img_compare_print_data(struct fp_print_data *enrolled_print, struct fp_print_data *new_print) ```
+	
+		```c
+		int fpi_img_compare_print_data(struct fp_print_data *enrolled_print, struct fp_print_data *new_print) 
+		```
 	- Add the attribute "API_EXPORTED" before the definition of the function:
-		``` API_EXPORTED int fpi_img_compare_print_data(struct fp_print_data *enrolled_print, struct fp_print_data *new_print) ```
+		
+		```c
+		API_EXPORTED int fpi_img_compare_print_data(struct fp_print_data *enrolled_print, struct fp_print_data *new_print) 
+		```
 	- Configure, compile and install libfprint in the library folder your system use for dynamic linking.
+		
+		```bash
+		$ ./configure --prefix=/usr
+		$ make
+		$ sudo make install
+		```
 
 - Setup enviroment variables.
 	- Edit the file ```JlibFprint_jni/src/Makefile.am```
 	- search for the ADD_INCLUDE variable (near line 53), and specify the JDK include library and the path of the source files of the libfprint you have just patched. Please take care to add also this subfolder: libfprint/nbis/include.
+	
+		```
+		#Modify the includes of the project, add you jdk include directory and libfprint includes
+		ADD_INCLUDES=
+		# Example
+		# ADD_INCLUDES=-I/opt/jdk1.7.0_03/include -I/opt/jdk1.7.0_03/include/linux -I/home/user/Downloads/libfprint-0.4.0 -I/home/user/Downloads/libfprint-0.4.0/libfprint/nbis/include
+
+		```
 
 - Compile
 	```bash
