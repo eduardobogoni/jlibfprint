@@ -55,14 +55,14 @@ with the native library along with an example, the second one is the dynamic lib
 	$ libtoolize
 	$ ./autogen.sh
 	$ cd build
-	$ ../compile
+	$ ../configure
 	$ make
 	$ sudo make install
 	```
 
 - Run!
 	```bash
-	$ export JLIBFPRINT_JNI=
+	$ export JLIBFPRINT_JNI=/usr/local/lib/libfprint_jni.so
 	$ cd JlibFprint
 	$ mvn install
 	$ java -cp target/jlibfprint-1.0-SNAPSHOT.jar  jlibfprint.SampleRun
