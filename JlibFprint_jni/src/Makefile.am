@@ -31,7 +31,7 @@ libfprint_jni_la_LDFLAGS = -module -avoid-version -shared
 
 # -------------------
 # Modify the includes of the project, add you jdk include directory and libfprint includes
-#ADD_INCLUDES=
+ADD_INCLUDES=
 # Example
 # ADD_INCLUDES=-I/opt/jdk1.7.0_03/include -I/opt/jdk1.7.0_03/include/linux -I../../Downloads/libfprint-0.4.0 -I../../Downloads/libfprint-0.4.0/libfprint/nbis/include
 #--------------------
