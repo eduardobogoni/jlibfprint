@@ -26,8 +26,7 @@ INSTALLATION
 ------------
 
 The Jlibfprint is a JNI bridge to libfprint, so it is strictly dependent
-from that library. We used for our testing the libfprint-0.4.0 and we will 
-refer to that version in the next of these instructions.
+from that library.
 
 Jlibfprint is divided in two folder: JlibFprint, JlibFprint_jni. 
 The first one contains for now only the Java class used for the bridging
