@@ -15,15 +15,15 @@ AM_LDFLAGS = -lm
 
 # Sources for libTest
 libfprint_jni_la_SOURCES = \
-	jlibfprint_JlibFprint.cpp  \
-	jlibfprint_Device.cpp       \
-	jlibfprint_DiscoveredDevice.cpp  \
-	jlibfprint_DiscoveredDeviceList.cpp  \
-	jlibfprint_PrintData.cpp   \
-	jlibfprint_Driver.cpp     \
-	jlibfprint_EnrollResult.cpp      \
-	jlibfprint_Exceptions.cpp  \
-	JniUtils.cpp
+	$(srcdir)/jlibfprint_JlibFprint.cpp   \
+	$(srcdir)/jlibfprint_Device.cpp       \
+	$(srcdir)/jlibfprint_DiscoveredDevice.cpp     \
+	$(srcdir)/jlibfprint_DiscoveredDeviceList.cpp \
+	$(srcdir)/jlibfprint_PrintData.cpp    \
+	$(srcdir)/jlibfprint_Driver.cpp       \
+	$(srcdir)/jlibfprint_EnrollResult.cpp \
+	$(srcdir)/jlibfprint_Exceptions.cpp   \
+	$(srcdir)/JniUtils.cpp
 
 # Linker options library
 libfprint_jni_la_LDFLAGS = -module -avoid-version -shared
