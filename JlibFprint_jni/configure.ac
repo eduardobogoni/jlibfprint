@@ -1,5 +1,3 @@
-# this is example-file: configure.ac
-
 # initial information about the project
 AC_INIT([libfprint_jni],[1.0])
 
@@ -7,7 +5,6 @@ AC_INIT([libfprint_jni],[1.0])
 AC_CONFIG_SRCDIR([src/jlibfprint_JlibFprint.cpp])
 
 AC_COPYRIGHT(GNU General Public License)
-
 
 # Checks for programs
 
@@ -57,4 +54,3 @@ AC_CONFIG_FILES([
 
 # generate the final Makefile etc.
 AC_OUTPUT
-

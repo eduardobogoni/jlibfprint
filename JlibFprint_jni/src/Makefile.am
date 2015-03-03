@@ -16,7 +16,7 @@ LDLIBSOPTIONS=`pkg-config --libs libfprint`
 AM_CFLAGS = --pedantic -Wall -std=c99 -O2
 AM_LDFLAGS = -lm $(LDLIBSOPTIONS)
 
-# Sources for libTest
+# Sources
 libfprint_jni_la_SOURCES = \
 	jlibfprint_JlibFprint.cpp   \
 	jlibfprint_Device.cpp       \
