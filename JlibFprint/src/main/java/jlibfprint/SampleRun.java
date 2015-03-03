@@ -19,6 +19,8 @@
  */
 package jlibfprint;
 
+import java.util.Arrays;
+
 /**
  *  A simple execution can be used to test the library.
  * @author agostino
@@ -39,6 +41,7 @@ public class SampleRun {
             showDeviceInfo(device);
             EnrollResult enrollResult = enroll(device);
             if (EnrollResultCode.COMPLETE.equals(enrollResult.getCode())) {
+                System.out.println("Print data: " + Arrays.toString(enrollResult.getPrintData().getData())); //print data get's set now only.
                 identify(device, enrollResult.getPrintData());
             }
             device.close();
@@ -52,6 +55,7 @@ public class SampleRun {
         System.out.println("\tNumber of enroll stages: " + device.getNumberEnrollStages());
         System.out.println("\tImage width: " + device.getImageWidth());
         System.out.println("\tImage height: " + device.getImageHeight());
+        System.out.println("=====================================");
     }
 
     private static void listDiscoveredDevices(DiscoveredDeviceList discoveredDeviceList) {
@@ -65,6 +69,7 @@ public class SampleRun {
             System.out.println("\tDriver.full_name: " + discoveredDevice.getDriver().getFullName());
             System.out.println("\tDriver.id: " + discoveredDevice.getDriver().getId());
         }
+        System.out.println("=====================================");
     }
 
     private static DiscoveredDevice getFirstDiscoveredDevice(DiscoveredDeviceList discoveredDeviceList) {
@@ -74,15 +79,17 @@ public class SampleRun {
     }
 
     private static EnrollResult enroll(Device device) {
-        System.out.println("Please, enroll the finger");
-        EnrollResult enrollResult = device.enroll();
-        System.out.println("Enroll result code: " + enrollResult.getCode());
-        System.out.println("Print data: " + enrollResult.getPrintData());
+        EnrollResult enrollResult = null;
+        for ( int i = 0 ; i < device.getNumberEnrollStages() ; i++ ) {
+            System.out.println("Please, enroll the finger");
+            enrollResult = device.enroll();
+            System.out.println("Enroll result code: " + enrollResult.getCode());
+        }
         return enrollResult;
     }
 
     private static void identify(Device device, PrintData printData) {
-        System.out.println("Please, enroll the finger again to verifiy");
+        System.out.println("Please, enroll the finger again to verify");
         VerifyResultCode result = device.verify(printData);
         System.out.println("Verify result code: " + result);        
     }
