@@ -1,5 +1,8 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Autotools template
 # http://www.gnu.org/software/automake
 
+Makefile
 Makefile.in
 
 # http://www.gnu.org/software/autoconf
@@ -12,24 +15,56 @@ Makefile.in
 /install-sh
 /missing
 /stamp-h1
+config.guess
+config.sub
 config.log
-
-#eclipse
-.settings
-
-Makefile
-Makefile.in
-lib/Makefile
-lib/Makefile.in
-
-m4
+config.status
 ltmain.sh
 libtool
+autoscan.log
 
-config.sub
-config.guess
-config.status
+
+#m4
+m4
+
+# Autotools
 .deps
+.libs
 
-#eclipse
-.project
+# Temporary
+*.swp
+*.~
+*.project
+*.cproject
+
+### C++ template
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+

@@ -27,6 +27,8 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS([string])
 AC_CHECK_HEADERS([iostream])
 AC_CHECK_HEADERS([jni])
+AC_CHECK_HEADERS([libfprint/fprint.h])
+
 
 LT_INIT
 
