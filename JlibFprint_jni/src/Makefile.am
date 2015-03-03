@@ -9,9 +9,12 @@ lib_LTLIBRARIES = libfprint_jni.la
 
 AUTOMAKE_OPTIONS = gnu
 
+# Link Libraries and Options
+LDLIBSOPTIONS=`pkg-config --libs libfprint`
+
 # whatever flags you want to pass to the C compiler & linker
 AM_CFLAGS = --pedantic -Wall -std=c99 -O2
-AM_LDFLAGS = -lm
+AM_LDFLAGS = -lm $(LDLIBSOPTIONS)
 
 # Sources for libTest
 libfprint_jni_la_SOURCES = \
@@ -26,7 +29,7 @@ libfprint_jni_la_SOURCES = \
 	JniUtils.cpp
 
 # Linker options library
-libfprint_jni_la_LDFLAGS = -module -avoid-version -shared
+libfprint_jni_la_LDFLAGS = -module -avoid-version -shared $(LDLIBSOPTIONS)
 
 
 # -------------------
