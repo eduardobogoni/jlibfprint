@@ -7,7 +7,7 @@ lib_LTLIBRARIES = libfprint_jni.la
 #######################################
 # Build information for each library
 
-AUTOMAKE_OPTIONS          = gnu
+AUTOMAKE_OPTIONS = gnu subdir-objects
 
 # whatever flags you want to pass to the C compiler & linker
 AM_CFLAGS = --pedantic -Wall -std=c99 -O2
@@ -31,7 +31,7 @@ libfprint_jni_la_LDFLAGS = -module -avoid-version -shared
 
 # -------------------
 # Modify the includes of the project, add you jdk include directory and libfprint includes
-ADD_INCLUDES=-I/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/include/darwin/  -I/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/include -I/Users/kinshuk.bairagi/Documents/learn/libfprint-0.6.0
+ADD_INCLUDES= -I../libfprint-0.6.0
 # Example
 # ADD_INCLUDES=-I/opt/jdk1.7.0_03/include -I/opt/jdk1.7.0_03/include/linux -I../../Downloads/libfprint-0.4.0 -I../../Downloads/libfprint-0.4.0/libfprint/nbis/include
 #--------------------
