@@ -1,0 +1,35 @@
+# http://www.gnu.org/software/automake
+
+Makefile.in
+
+# http://www.gnu.org/software/autoconf
+
+/autom4te.cache
+/aclocal.m4
+/compile
+/configure
+/depcomp
+/install-sh
+/missing
+/stamp-h1
+config.log
+
+#eclipse
+.settings
+
+Makefile
+Makefile.in
+lib/Makefile
+lib/Makefile.in
+
+m4
+ltmain.sh
+libtool
+
+config.sub
+config.guess
+config.status
+.deps
+
+#eclipse
+.project
