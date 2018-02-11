@@ -119,4 +119,4 @@ Thanks to:
 - Copyright (C) 2007 Jan-Michael Brummer <buzz2@gmx.de>
 - Copyright (C) 2007 Anthony Bretaudeau <wxcover@users.sourceforge.net>
 - Copyright (C) 2010 Hugo Grostabussiat <dw23.devel@gmail.com>
-
+- Copyright (C) 2015 Eduardo Bogoni <eduardobogoni@gmail.com>
